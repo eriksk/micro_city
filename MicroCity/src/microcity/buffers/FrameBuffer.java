@@ -96,7 +96,6 @@ public class FrameBuffer {
     }
 
     public void render(int shader) {
-        glEnable(GL_TEXTURE_2D);
         
         glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, depthFrameBufferID);                    // switch to rendering on the framebuffer
         glBindTexture(GL_TEXTURE_2D, depthTextureID);
@@ -120,13 +119,15 @@ public class FrameBuffer {
         glBindTexture(GL_TEXTURE_2D, depthTextureID);
         
         
+        GL13.glActiveTexture(GL13.GL_TEXTURE0);
+        
+        
         glViewport(0, 0, width, height);                                    // set The Current Viewport
 
         glLoadIdentity();                                              // Reset The Modelview Matrix
         glTranslatef(0.0f, 0.0f, -1000f);                               // Translate 6 Units Into The Screen and then rotate
         drawBox();                                                      // draw the box
 
-        glDisable(GL_TEXTURE_2D);
         
         glFlush();
     }

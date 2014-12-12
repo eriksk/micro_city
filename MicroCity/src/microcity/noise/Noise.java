@@ -20,6 +20,7 @@ public class Noise {
         return perlinNoise(width, height, 6);
     }
 
+
     public static float[][] whiteNoise(int width, int height) {
         Random random = new Random(0); //Seed to 0 for testing
         float[][] noise = new float[width][height];
@@ -36,7 +37,6 @@ public class Noise {
     public static float Interpolate(float x0, float x1, float alpha) {
         return x0 * (1 - alpha) + alpha * x1;
     }
-
 
     public static float[][] smoothNoise(float[][] baseNoise, int octave) {
         int width = baseNoise.length;

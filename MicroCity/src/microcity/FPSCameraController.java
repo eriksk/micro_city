@@ -47,7 +47,7 @@ public class FPSCameraController {
         
         if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT))
         {
-            movementSpeed *= 2f;
+            movementSpeed *= 8f;
         }
         
         //when passing in the distance to move

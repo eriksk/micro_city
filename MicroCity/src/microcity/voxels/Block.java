@@ -18,7 +18,7 @@ public class Block {
     public static final int TYPE_STONE = 1;
     
     private static final Color[] colors = new Color[]{
-        Color.Blue(),
+        Color.Gray(),
         Color.Brown(),
         Color.Green(),
         Color.Gray(),

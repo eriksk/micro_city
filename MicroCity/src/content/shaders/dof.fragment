@@ -6,16 +6,16 @@ uniform sampler2D depthTex;
 float linearizeDepth(vec2 uv)
 {
   float n = 1.0; // camera z near
-  float f = 1000.0; // camera z far
+  float f = 5000.0; // camera z far
   float z = texture2D(depthTex, uv).x;
   return (2.0 * n) / (f + n - z * (f - n));	
 }
 
 void main(){
     
-    float blurclamp = 0.01;  // max blur amount
-    float bias = 0.1; //aperture - bigger values for shallower depth of field
-    float focus = 0.5;  // this value comes from ReadDepth script.
+    float blurclamp = 0.5;  // max blur amount
+    float bias = 0.01; //aperture - bigger values for shallower depth of field
+    float focus = 0.01;  // this value comes from ReadDepth script.
  
     float aspectratio = 1280.0/720.0;
     vec2 aspectcorrect = vec2(1.0,aspectratio);
