@@ -1,0 +1,16 @@
+varying vec4 color;
+varying vec3 normal;
+varying vec3 position;
+
+void main(){
+    vec3 ambient = gl_FrontMaterial.ambient * gl_LightSource[0].ambient;
+    vec3 surfaceToLight = normalize(gl_LightSource[0].position - position);
+    vec3 norm = normalize(normal);
+    float contribution = max(0.0, dot(norm, surfaceToLight)); // max because light cannot be negative
+    vec3 diffuse = contribution * gl_FrontMaterial.diffuse * gl_LightSource[0].diffuse;
+    vec3 surfaceToView = normalize(-position); // angle from 0 0 0, alas cam
+    vec3 reflection = reflect(norm, -surfaceToLight);
+    float speculatContribution = pow(max(0.0, dot(surfaceToView, reflection)), gl_FrontMaterial.shininess);
+    vec3 specular = speculatContribution * gl_FrontMaterial.specular * gl_LightSource[0].specular;
+    gl_FragColor = color * vec4(ambient + diffuse + specular, 1.0);
+}

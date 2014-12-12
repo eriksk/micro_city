@@ -1,0 +1,10 @@
+varying vec4 color;
+varying vec3 normal;
+varying vec3 position;
+
+void main(){
+    color = gl_Color;
+    normal = gl_NormalMatrix * gl_Normal;
+    position = vec3(gl_ModelViewMatrix * gl_Vertex);
+    gl_Position = gl_ModelViewProjectionMatrix*gl_Vertex;
+}
